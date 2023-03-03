@@ -1,7 +1,14 @@
 {
     "cSpell.words": [
         "Btncontainer",
-        "taskinput"
+        "canceledit",
+        "deicon",
+        "delicon",
+        "editicon",
+        "Taskicon",
+        "taskinput",
+        "taskopt",
+        "todolist"
     ],
     "liveServer.settings.port": 5501
 }
