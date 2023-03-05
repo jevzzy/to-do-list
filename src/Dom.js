@@ -183,9 +183,3 @@ editTaskDiv.appendChild(editPrior)
 editTaskDiv.appendChild(addEditBtn)
 editTaskDiv.appendChild(cancelEditBtn)
 
-const pList = projectList.querySelectorAll("li")
-pList.forEach(li=>{
-    li.addEventListener("click", (e)=>{
-        console.log(e)
-    })
-})
