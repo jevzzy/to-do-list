@@ -13,6 +13,7 @@ export function addProjectToList (){
    }
  
 let indexs;
+export let taskz;
    export const displayProjectlist = ()=>{
     /*for(const child of projectList.children) {
      child.remove()
@@ -21,9 +22,8 @@ let indexs;
     dom.projectList.textContent = ""
      for(let i = 0;i < tsk.projects.length; i++){
        const project = document.createElement("li")
-       project.className = "projects"
-
-
+       project.className = "projects"  
+       project.setAttribute("data-index", i)
        project.innerHTML = `<h4>${tsk.projects[i].name}</h4>`
        dom.projectList.appendChild(project)
        dom.sidebar.insertBefore(dom.projectList, dom.projDiv)
@@ -42,11 +42,21 @@ let indexs;
     })
      console.log(tsk.projects)
      } 
-   
+   const list = dom.projectList.querySelectorAll("li")
+   list.forEach(li=>{
+    li.addEventListener("click", (e)=>{
+      let index = li.dataset.index
+      dom.contentTitle.innerText = tsk.projects[index].name
+      dom.taskLists.innerText = ""
+      
+      taskz = tsk.projects[index].task
+      displayTaskList(taskz)
+    })
+   })
+
      }
 
      export const createNewTask = () => {
-  
         const title = dom.titleInput.value
         const note = dom.notes.value
         const date = dom.dueDateInput.value
@@ -55,18 +65,16 @@ let indexs;
       if(project.name == dom.contentTitle.innerText){
     
         project.task.push(newTask)
-        displayProjectlist()
+        displayProjectlist(taskz)
       }
     })
     
     }
 
 
-    export function displayTaskList(){
-        tsk.projects.forEach(project=>{
-          if(project.name === dom.contentTitle.innerText){
+    export function displayTaskList(arr){
                dom.taskLists.textContent = ""
-              const tasks = project.task
+              const tasks = arr
               console.log(tasks)
               for (const task in tasks){
                 const taskList = document.createElement("li")
@@ -97,7 +105,7 @@ taskList.appendChild(taskOption)
             
              tasks.splice(index, 1)
              console.log(tasks)
-             displayTaskList()
+             displayTaskList(arr)
             })
               console.log(tasks)
 //edit task button
@@ -117,8 +125,7 @@ taskList.appendChild(taskOption)
               })
 
               }
-          }
-        })
+         
       
       }
       
@@ -141,7 +148,7 @@ export function editTask(){
   dom.editTaskDiv.style.display = "none"
   dom.modal.style.display = "none"
     }})
-   displayTaskList()
+   displayTaskList(taskz)
 }
 
 

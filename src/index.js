@@ -16,7 +16,7 @@ const homepage = () =>{
    
 window.addEventListener("DOMContentLoaded", ()=>{
   homepage()
-  tdo.displayTaskList()
+  tdo.displayTaskList(tdo.taskz)
 } )  
 
 
@@ -28,14 +28,14 @@ dom.addProjectBtn.addEventListener("click", dom.projectform)
 
 dom.createTaskBtn.addEventListener("click", (e)=>{
   dom.modal.style = "none"
- 
  /* dom.taskLists.appendChild(/*dom.taskList)*/
   dom.taskContentDiv.style.display = "none"
   dom.content.appendChild(dom.taskLists
     )
+    
   dom.content.appendChild(dom.addMoreTaskBtn)
   tdo.createNewTask()
-  tdo.displayTaskList()
+  tdo.displayTaskList(tdo.taskz)
 })
 
 

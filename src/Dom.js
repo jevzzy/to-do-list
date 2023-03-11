@@ -3,7 +3,7 @@ import "./style.css";
 import * as tdo from "./todofunctions.js"
 import icon2 from "../src/asset/correct.png"
 import icon3 from "../src/asset/cancel.png"
-import { addSeconds } from "date-fns";
+import { projectLi } from "./todofunctions.js";
 //==========================================================
 export const container = document.querySelector(".container")
 export const header = document.createElement("div")
@@ -118,11 +118,11 @@ export function createProjectDom(){
         sidebar.appendChild(projectList)
         contentTitle.innerText = `${projectInput.value}`
         content.appendChild(contentTitle)
-        content.appendChild(taskContentDiv)
+     content.appendChild(taskContentDiv)
         taskContentDiv.style.display = "block"
         tdo.addProjectToList()
         content.style.display = "block"
-        tdo.displayTaskList()
+        tdo.displayTaskList(tdo.taskz)
        clearprojDiv()
        clearInput()
        
@@ -182,4 +182,6 @@ editTaskDiv.appendChild(editDate)
 editTaskDiv.appendChild(editPrior)
 editTaskDiv.appendChild(addEditBtn)
 editTaskDiv.appendChild(cancelEditBtn)
+
+
 
