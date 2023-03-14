@@ -35,7 +35,17 @@ dom.createTaskBtn.addEventListener("click", (e)=>{
     
   dom.content.appendChild(dom.addMoreTaskBtn)
   tdo.createNewTask()
-  tdo.displayTaskList(tdo.taskz)
+  let taskx;
+dom.projectList.childNodes.forEach(node=>{
+if(node.innerText === dom.contentTitle.innerText){
+   let index = node.dataset.index
+   taskx = pj.projects[index].task
+   console.log(taskx)
+   tdo.displayTaskList(taskx)
+}
+})
+
+
 })
 
 

@@ -21,7 +21,10 @@ export class Task {
 
 
 
-export let projects = []
+export let projects = JSON.parse(localStorage.getItem("projects")) || []
+
+
+
 
 
 

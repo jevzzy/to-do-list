@@ -8,8 +8,11 @@ import editicon from "./asset/icons8-pencil-30.png"
 export function addProjectToList (){
     const newProject = new tsk.project(dom.projectInput.value)
     tsk.projects.push(newProject)
+    localStorage.setItem("projects", JSON.stringify(tsk.projects))
      /*projectArray.push()*/
+   
     displayProjectlist()
+
    }
  
 let indexs;
@@ -61,9 +64,9 @@ export let taskz;
         const note = dom.notes.value
         const date = dom.dueDateInput.value
     const newTask = new tsk.Task(title,note,dom.priority,date)
+   
     tsk.projects.forEach(project=>{
       if(project.name == dom.contentTitle.innerText){
-    
         project.task.push(newTask)
         displayProjectlist(taskz)
       }
@@ -116,7 +119,7 @@ taskList.appendChild(taskOption)
                 let index = taskList.dataset.index
                 indexs = index
                 dom.editTitle.value = tasks[index].title
-                dom.editNote.value = tasks[index].note
+                dom.editNote.value = tasks[index].notes
                 dom.editDate.value = tasks[index].date
                     dom.modal.style.display = "block"
                     dom.editTaskDiv.style.display = "block"
@@ -141,7 +144,7 @@ export function editTask(){
          dom.taskLists.textContent = ""
         const tasks = project.task
        tasks[indexs].title =  dom.editTitle.value 
-        tasks[indexs].note = dom.editNote.value 
+        tasks[indexs].notes = dom.editNote.value 
         tasks[indexs].date = dom.editDate.value 
      console.log(tasks[indexs])
   lists[indexs].textContent = ""

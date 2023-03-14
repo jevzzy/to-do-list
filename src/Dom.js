@@ -102,8 +102,12 @@ export let priority;
 priorities.forEach(prior =>{
     
     prior.addEventListener("click", (e)=>{
+       for(let i=0;i<priorities.length;i++){
+        priorities[i].classList.remove("scale")
+       }
         priority = prior.textContent;
         prior.classList.add("scale")
+
         
     }
     )
@@ -132,6 +136,9 @@ export function createProjectDom(){
 export function clearInput(){
     titleInput.value = ""
     notes.value = ""
+    for(let i=0;i<priorities.length;i++){
+        priorities[i].classList.remove("scale")
+       }
 }
 
 export function newTask(){
